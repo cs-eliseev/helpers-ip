@@ -61,6 +61,14 @@ git clone https://github.com/cs-eliseev/helpers-ip.git
 
 The class consists of static methods that are conveniently used in any project. See example [examples-ip.php](https://github.com/cs-eliseev/helpers-ip/blob/master/examples/examples-ip.php).
 
+**Get real IP address**
+
+Example:
+```php
+IP::getRealIP();
+// xxx.xxx.xxx.xxx
+```
+
 
 ## License
 
