@@ -46,7 +46,7 @@ class IP
     }
 
     /**
-     * Is IPv4
+     * Check is IPv4 address
      *
      * @param string $ip
      * @return bool
