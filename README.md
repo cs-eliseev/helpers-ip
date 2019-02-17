@@ -97,6 +97,41 @@ IP::isIPv4('256.256.256');
 // false
 ```
 
+**Check is IPv6 address**
+
+Example:
+```php
+IP::isIPv6('2a0a:2b40::4:60');
+// true
+```
+
+Check null:
+```php
+IP::isIPv6('::');
+// true
+```
+
+Check localhost IPv6:
+```php
+IP::isIPv6('::1');
+// true
+IP::isIPv6('0:0:0:0:0:0:0:1');
+// true
+```
+
+Check is IPv4:
+```php
+IP::isIPv6('127.0.0.1');
+// false
+```
+
+Check is not IP:
+```php
+IP::isIPv6(':');
+// false
+```
+
+
 ## License
 
 See the [LICENSE.md](https://github.com/cs-eliseev/helpers-ip/blob/master/LICENSE.md) file for licensing details.
