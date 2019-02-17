@@ -33,4 +33,15 @@ class IP
 
         return empty($ip) ? ($_SERVER['REMOTE_ADDR'] ?? null) : $ip;
     }
+
+    /**
+     * Remove subnet mask to IPv6
+     *
+     * @param string $ip
+     * @return mixed
+     */
+    public static function removeSubnetMaskIPv6(string $ip): ?string
+    {
+        return preg_replace('/^(.*)(\/[\d]*)$/', '${1}', $ip);
+    }
 }
