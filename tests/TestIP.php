@@ -66,4 +66,40 @@ class TestIP extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param string $ip
+     * @param bool $expected
+     *
+     * @dataProvider providerIsIPv4
+     */
+    public function testIsIPv4(string $ip, bool $expected): void
+    {
+        $this->assertEquals($expected, IP::isIPv4($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerIsIPv4(): array
+    {
+        return [
+            [
+                '127.0.0.1',
+                true,
+            ],
+            [
+                '255.255.255.255',
+                true,
+            ],
+            [
+                '256.256.256.256',
+                false,
+            ],
+            [
+                '2a0a:2b40::4:60',
+                false,
+            ],
+        ];
+    }
 }
