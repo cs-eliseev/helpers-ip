@@ -19,3 +19,12 @@ echo PHP_EOL;
 var_dump(IP::removeSubnetMaskIPv6('2a0a:2b40::4:60'));
 var_dump(IP::removeSubnetMaskIPv6('2a0a:2b40::4:60/124'));
 echo PHP_EOL;
+
+// Example: check is IPv4 address
+// true
+var_dump(IP::isIPv4('127.0.0.1'));
+// false
+var_dump(IP::isIPv4('256.256.256'));
+// false
+var_dump(IP::isIPv4('2a0a:2b40::4:60'));
+echo PHP_EOL;
