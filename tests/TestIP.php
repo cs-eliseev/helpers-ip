@@ -102,4 +102,56 @@ class TestIP extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param string $ip
+     * @param bool $expected
+     *
+     * @dataProvider providerIsIPv6
+     */
+    public function testIsIPv6(string $ip, bool $expected): void
+    {
+        $this->assertEquals($expected, IP::isIPv6($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerIsIPv6(): array
+    {
+        return [
+            [
+                '::',
+                true,
+            ],
+            [
+                '::1',
+                true,
+            ],
+            [
+                '::ffff:192.0.2.1',
+                true,
+            ],
+            [
+                '2a0a:2b40::4:60',
+                true,
+            ],
+            [
+                '0:0:0:0:0:0:0:1',
+                true,
+            ],
+            [
+                ':',
+                false,
+            ],
+            [
+                '255.255.255.255',
+                false,
+            ],
+            [
+                '256.256.256.256',
+                false,
+            ],
+        ];
+    }
 }
