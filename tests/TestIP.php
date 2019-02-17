@@ -36,4 +36,34 @@ class TestIP extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param array $server
+     * @param string $expected
+     *
+     * @dataProvider  providerRemoveSubnetMaskIPv6
+     *
+     * @runInSeparateProcess
+     */
+    public function testRemoveSubnetMaskIPv6(string $ip, string $expected): void
+    {
+        $this->assertEquals($expected, IP::removeSubnetMaskIPv6($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerRemoveSubnetMaskIPv6(): array
+    {
+        return [
+            [
+                '2a0a:2b40::4:60',
+                '2a0a:2b40::4:60'
+            ],
+            [
+                '2a0a:2b40::4:60/124',
+                '2a0a:2b40::4:60'
+            ],
+        ];
+    }
 }
