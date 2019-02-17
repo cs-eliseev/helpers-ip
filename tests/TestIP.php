@@ -154,4 +154,60 @@ class TestIP extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param string $ip
+     * @param bool $expected
+     *
+     * @dataProvider providerGetVersionIP
+     */
+    public function testGetVersionIP(string $ip, bool $expected): void
+    {
+        $this->assertEquals($expected, IP::getVersionIP($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerGetVersionIP(): array
+    {
+        return [
+            [
+                '::',
+                6,
+            ],
+            [
+                '::1',
+                6,
+            ],
+            [
+                '::ffff:192.0.2.1',
+                6,
+            ],
+            [
+                '2a0a:2b40::4:60',
+                6,
+            ],
+            [
+                '0:0:0:0:0:0:0:1',
+                6,
+            ],
+            [
+                ':',
+                null,
+            ],
+            [
+                '127.0.0.1',
+                4,
+            ],
+            [
+                '255.255.255.255',
+                4,
+            ],
+            [
+                '256.256.256.256',
+                null,
+            ],
+        ];
+    }
 }
