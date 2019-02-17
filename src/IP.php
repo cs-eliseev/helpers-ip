@@ -55,4 +55,15 @@ class IP
     {
         return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
+
+    /**
+     * Check is IPv4 address
+     *
+     * @param string $ip
+     * @return bool
+     */
+    public static function isIPv6(string $ip): bool
+    {
+        return (bool) filter_var(self::removeSubnetMaskIPv6($ip), FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+    }
 }
