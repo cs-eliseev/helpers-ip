@@ -11,6 +11,9 @@ namespace cse\helpers;
  */
 class IP
 {
+    const IP_VERSION_4 = 4;
+    const IP_VERSION_6 = 6;
+
     /**
      * Get real IP
      *
@@ -65,5 +68,16 @@ class IP
     public static function isIPv6(string $ip): bool
     {
         return (bool) filter_var(self::removeSubnetMaskIPv6($ip), FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+    }
+
+    /**
+     * Get version IP
+     *
+     * @param string $ip
+     * @return int|null
+     */
+    public static function getVersionIP(string $ip): ?int
+    {
+        return self::isIPv4($ip) ? self::IP_VERSION_4 : (self::isIPv6($ip) ? self::IP_VERSION_6 : null);
     }
 }
