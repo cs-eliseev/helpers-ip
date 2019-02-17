@@ -44,4 +44,15 @@ class IP
     {
         return preg_replace('/^(.*)(\/[\d]*)$/', '${1}', $ip);
     }
+
+    /**
+     * Is IPv4
+     *
+     * @param string $ip
+     * @return bool
+     */
+    public static function isIPv4(string $ip): bool
+    {
+        return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+    }
 }
