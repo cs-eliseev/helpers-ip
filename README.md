@@ -77,6 +77,26 @@ IP::removeSubnetMaskIPv6('2a0a:2b40::4:60/124');
 // 2a0a:2b40::4:60
 ```
 
+**Check is IPv4 address**
+
+Example:
+```php
+IP::isIPv4('127.0.0.1');
+// true
+```
+
+Check is IPv6:
+```php
+IP::isIPv4('2a0a:2b40::4:60');
+// false
+```
+
+Check is not IP:
+```php
+IP::isIPv4('256.256.256');
+// false
+```
+
 ## License
 
 See the [LICENSE.md](https://github.com/cs-eliseev/helpers-ip/blob/master/LICENSE.md) file for licensing details.
