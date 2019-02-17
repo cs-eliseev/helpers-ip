@@ -71,7 +71,7 @@ class IP
     }
 
     /**
-     * Get version IP
+     * Get version IP address
      *
      * @param string $ip
      * @return int|null
