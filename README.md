@@ -69,6 +69,13 @@ IP::getRealIP();
 // xxx.xxx.xxx.xxx
 ```
 
+**Remove subnet mask IPv6**
+
+Example:
+```php
+IP::removeSubnetMaskIPv6('2a0a:2b40::4:60/124');
+// 2a0a:2b40::4:60
+```
 
 ## License
 
