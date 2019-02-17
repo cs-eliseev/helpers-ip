@@ -29,7 +29,7 @@ var_dump(IP::isIPv4('256.256.256'));
 var_dump(IP::isIPv4('2a0a:2b40::4:60'));
 echo PHP_EOL;
 
-// Example: check is IPv4 address
+// Example: check is IPv6 address
 // true
 var_dump(IP::isIPv6('::'));
 // true
@@ -42,4 +42,17 @@ var_dump(IP::isIPv6('0:0:0:0:0:0:0:1'));
 var_dump(IP::isIPv6(':'));
 // false
 var_dump(IP::isIPv6('127.0.0.1'));
+echo PHP_EOL;
+
+// Example: check is IPv6 address
+// 6
+var_dump(IP::getVersionIP('::1'));
+// 4
+var_dump(IP::getVersionIP('127.0.0.1'));
+// 6
+var_dump(IP::getVersionIP('0:0:0:0:0:0:0:1'));
+// null
+var_dump(IP::getVersionIP(':'));
+// null
+var_dump(IP::getVersionIP('256.256.256.256'));
 echo PHP_EOL;
