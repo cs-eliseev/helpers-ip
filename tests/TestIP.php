@@ -328,7 +328,7 @@ class TestIP extends TestCase
      *
      * @dataProvider providerGetFirstIPByVersion
      */
-    public function testGetFirstIPByVersion(string $ip, int $version, string $expected): void
+    public function testGetFirstIPByVersion(string $ip, int $version, ?string $expected): void
     {
         $this->assertEquals($expected, IP::getFirstIPByVersion($ip));
     }
@@ -362,6 +362,16 @@ class TestIP extends TestCase
                 ],
                 6,
                 '2a0a:2b40::4:60',
+            ],
+            [
+                [
+                    '256.256.256.256',
+                    '2a0a:2b40::4:60',
+                    '2a0a:2b40::4:6f',
+                    '256.256.256.256'
+                ],
+                4,
+                null,
             ],
         ];
     }
