@@ -69,3 +69,8 @@ var_dump(IP::isIP(':'));
 // null
 var_dump(IP::isIP('256.256.256.256'));
 echo PHP_EOL;
+
+// Example: get range IPv6 address
+// ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']
+var_dump(IP::getRangeIPv6('2a0a:2b40::4:60/124'));
+echo PHP_EOL;
