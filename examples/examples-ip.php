@@ -104,7 +104,7 @@ var_dump(IP::filterIPs([
 ], 6));
 echo PHP_EOL;
 
-// Example: filter IPs address
+// Example: get first IP by version
 // '127.0.0.1'
 var_dump(IP::getFirstIPByVersion([
     '256.256.256.256',
