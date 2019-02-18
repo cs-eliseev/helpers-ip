@@ -157,6 +157,32 @@ IP::getVersionIP('256.256.256.256');
 // null
 ```
 
+**Is IP address**
+
+Example:
+```php
+IP::isIP('::1');
+// true
+```
+
+Check versin IPv4:
+```php
+IP::isIP('127.0.0.1');
+// true
+```
+
+Check versin IPv6:
+```php
+IP::isIP('0:0:0:0:0:0:0:1');
+// true
+```
+
+Check versin in not IP:
+```php
+IP::isIP('256.256.256.256');
+// false
+```
+
 
 ## License
 
