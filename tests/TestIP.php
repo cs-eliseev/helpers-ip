@@ -266,4 +266,33 @@ class TestIP extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param string $ip
+     * @param array $expected
+     *
+     * @dataProvider providerGetRangeIPv6
+     */
+    public function testGetRangeIPv6(string $ip, array $expected): void
+    {
+        $this->assertEquals($expected, IP::getRangeIPv6($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerGetRangeIPv6(): array
+    {
+        return [
+            [
+                '2a0a:2b40::4:60/124',
+                ['2a0a:2b40::4:60', '2a0a:2b40::4:6f'],
+            ],
+
+            [
+                '::/24',
+                ['::', '0:ff:ffff:ffff:ffff:ffff:ffff:ffff'],
+            ],
+        ];
+    }
 }
