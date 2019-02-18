@@ -5,6 +5,22 @@ The helpers allows you to manipulating network IP addresses (IPv4 and IPv6).
 
 Project repository: https://github.com/cs-eliseev/helpers-ip
 
+```php
+$ip = IP::getRealIP();
+if (IP::isIP($ip)) {
+    switch (true) {
+        case IP::isIPv4($ip):
+            break;
+        case IP::isIPv6($ip):
+            $ip = IP::removeSubnetMaskIPv6($ip);
+            $ip = IP::getRangeIPv6($ip);
+            $ip = IP::getFirstIPByVersion($ip);
+            break;
+    }
+    $version = IP::getVersionIP($ip);
+}
+```
+
 ***
 
 ## Introduction
