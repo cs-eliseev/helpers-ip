@@ -320,4 +320,49 @@ class TestIP extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param string $ip
+     * @param int|null $version
+     * @param array $expected
+     *
+     * @dataProvider providerGetFirstIPByVersion
+     */
+    public function testGetFirstIPByVersion(string $ip, int $version, string $expected): void
+    {
+        $this->assertEquals($expected, IP::getFirstIPByVersion($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerGetFirstIPByVersion(): array
+    {
+        return [
+            [
+                [
+                    '256.256.256.256',
+                    '127.0.0.1',
+                    '2a0a:2b40::4:60',
+                    '255.255.255.255',
+                    '2a0a:2b40::4:6f',
+                    '256.256.256.256'
+                ],
+                4,
+                '127.0.0.1',
+            ],
+            [
+                [
+                    '256.256.256.256',
+                    '127.0.0.1',
+                    '2a0a:2b40::4:60',
+                    '255.255.255.255',
+                    '2a0a:2b40::4:6f',
+                    '256.256.256.256'
+                ],
+                6,
+                '2a0a:2b40::4:60',
+            ],
+        ];
+    }
 }
