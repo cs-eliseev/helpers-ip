@@ -76,7 +76,7 @@ var_dump(IP::getRangeIPv6('2a0a:2b40::4:60/124'));
 echo PHP_EOL;
 
 // Example: filter IPs address
-// [4 => ['127.0.0.1', '255.255.255.255'], 6 => '2a0a:2b40::4:60', '2a0a:2b40::4:6f']]
+// [4 => ['127.0.0.1', '255.255.255.255'], 6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']]
 var_dump(IP::filterIPs([
     '127.0.0.1',
     '2a0a:2b40::4:60',
@@ -94,7 +94,7 @@ var_dump(IP::filterIPs([
     '256.256.256.256'
 ], 4));
 // Example: filter IPv6 address
-// [6 => '2a0a:2b40::4:60', '2a0a:2b40::4:6f']]
+// [6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']]
 var_dump(IP::filterIPs([
     '127.0.0.1',
     '2a0a:2b40::4:60',

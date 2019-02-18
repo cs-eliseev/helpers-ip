@@ -157,11 +157,11 @@ class TestIP extends TestCase
 
     /**
      * @param string $ip
-     * @param bool $expected
+     * @param int|null $expected
      *
      * @dataProvider providerGetVersionIP
      */
-    public function testGetVersionIP(string $ip, bool $expected): void
+    public function testGetVersionIP(string $ip, ?int $expected): void
     {
         $this->assertEquals($expected, IP::getVersionIP($ip));
     }
@@ -269,29 +269,54 @@ class TestIP extends TestCase
 
     /**
      * @param string $ip
+     * @param int|null $version
      * @param array $expected
      *
-     * @dataProvider providerGetRangeIPv6
+     * @dataProvider providerFilterIPs
      */
-    public function testGetRangeIPv6(string $ip, array $expected): void
+    public function testFilterIPs(string $ip, ?int $version, array $expected): void
     {
-        $this->assertEquals($expected, IP::getRangeIPv6($ip));
+        $this->assertEquals($expected, IP::filterIPs($ip));
     }
 
     /**
      * @return array
      */
-    public function providerGetRangeIPv6(): array
+    public function providerFilterIPs(): array
     {
         return [
             [
-                '2a0a:2b40::4:60/124',
-                ['2a0a:2b40::4:60', '2a0a:2b40::4:6f'],
+                [
+                    '127.0.0.1',
+                    '2a0a:2b40::4:60',
+                    '255.255.255.255',
+                    '2a0a:2b40::4:6f',
+                    '256.256.256.256'
+                ],
+                null,
+                [4 => ['127.0.0.1', '255.255.255.255'], 6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']],
             ],
-
             [
-                '::/24',
-                ['::', '0:ff:ffff:ffff:ffff:ffff:ffff:ffff'],
+                [
+                    '127.0.0.1',
+                    '2a0a:2b40::4:60',
+                    '255.255.255.255',
+                    '2a0a:2b40::4:6f',
+                    '256.256.256.256'
+                ],
+                4,
+                [4 => ['127.0.0.1', '255.255.255.255']],
+            ],
+            [
+                [
+                    '127.0.0.1',
+                    '2a0a:2b40::4:60',
+                    '255.255.255.255',
+                    '2a0a:2b40::4:6f',
+                    '256.256.256.256'
+                ],
+                6,
+                [6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']],
             ],
         ];
     }
