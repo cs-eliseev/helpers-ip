@@ -210,4 +210,60 @@ class TestIP extends TestCase
             ],
         ];
     }
+
+    /**
+     * @param string $ip
+     * @param bool $expected
+     *
+     * @dataProvider providerIsIP
+     */
+    public function testIsIP(string $ip, bool $expected): void
+    {
+        $this->assertEquals($expected, IP::isIP($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerIsIP(): array
+    {
+        return [
+            [
+                '::',
+                true,
+            ],
+            [
+                '::1',
+                true,
+            ],
+            [
+                '::ffff:192.0.2.1',
+                true,
+            ],
+            [
+                '2a0a:2b40::4:60',
+                true,
+            ],
+            [
+                '0:0:0:0:0:0:0:1',
+                true,
+            ],
+            [
+                ':',
+                false,
+            ],
+            [
+                '127.0.0.1',
+                true,
+            ],
+            [
+                '255.255.255.255',
+                true,
+            ],
+            [
+                '256.256.256.256',
+                false,
+            ],
+        ];
+    }
 }
