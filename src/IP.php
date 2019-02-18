@@ -82,7 +82,7 @@ class IP
     }
 
     /**
-     * is IP
+     * Is IP address
      *
      * @param string $ip
      * @return bool
