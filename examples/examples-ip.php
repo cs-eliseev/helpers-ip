@@ -56,3 +56,16 @@ var_dump(IP::getVersionIP(':'));
 // null
 var_dump(IP::getVersionIP('256.256.256.256'));
 echo PHP_EOL;
+
+// Example: is IP address
+// 6
+var_dump(IP::isIP('::1'));
+// 4
+var_dump(IP::isIP('127.0.0.1'));
+// 6
+var_dump(IP::isIP('0:0:0:0:0:0:0:1'));
+// null
+var_dump(IP::isIP(':'));
+// null
+var_dump(IP::isIP('256.256.256.256'));
+echo PHP_EOL;
