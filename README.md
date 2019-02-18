@@ -183,6 +183,14 @@ IP::isIP('256.256.256.256');
 // false
 ```
 
+**Get range IPv6 address**
+
+Example:
+```php
+IP::getRangeIPv6('2a0a:2b40::4:60/124');
+// ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']
+```
+
 
 ## License
 
