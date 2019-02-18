@@ -80,4 +80,15 @@ class IP
     {
         return self::isIPv4($ip) ? self::IP_VERSION_4 : (self::isIPv6($ip) ? self::IP_VERSION_6 : null);
     }
+
+    /**
+     * is IP
+     *
+     * @param string $ip
+     * @return bool
+     */
+    public static function isIP(string $ip): bool
+    {
+        return is_int(self::getVersionIP($ip));
+    }
 }
