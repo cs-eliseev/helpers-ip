@@ -103,3 +103,23 @@ var_dump(IP::filterIPs([
     '256.256.256.256'
 ], 6));
 echo PHP_EOL;
+
+// Example: filter IPs address
+// '127.0.0.1'
+var_dump(IP::getFirstIPByVersion([
+    '256.256.256.256',
+    '127.0.0.1',
+    '2a0a:2b40::4:60',
+    '255.255.255.255',
+    '2a0a:2b40::4:6f',
+    '256.256.256.256'
+], 4));
+// '2a0a:2b40::4:60'
+var_dump(IP::getFirstIPByVersion([
+    '256.256.256.256',
+    '127.0.0.1',
+    '2a0a:2b40::4:60',
+    '255.255.255.255',
+    '2a0a:2b40::4:6f'
+], 6));
+echo PHP_EOL;
