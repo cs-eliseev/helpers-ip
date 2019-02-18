@@ -161,4 +161,21 @@ class IP
 
         return is_int($version) ? $result[$version] : $result;
     }
+
+    /**
+     * Get first ip by version
+     *
+     * @param array $ips
+     * @param int|null $version
+     * @return null|string
+     */
+    public static function getFirstIPByVersion (array $ips, int $version): ?string
+    {
+        foreach ($ips as $ip) {
+            $current_version = self::getVersionIP($ip);
+            if (is_int($current_version) && $version == $current_version) return $ip;
+        }
+
+        return null;
+    }
 }
