@@ -1,8 +1,8 @@
 {
-    "name": "cse/helpers-date",
+    "name": "cse/helpers-ip",
     "description": "The helpers allows you to manipulating network IP addresses (IPv4 and IPv6).",
     "keywords": ["network", "ipv6", "ipv4", "ip", "cse", "cs-eliseev", "framework", "basic", "library", "project"],
-    "homepage": "https://github.com/cs-eliseev/helpers-date",
+    "homepage": "https://github.com/cs-eliseev/helpers-ip",
     "type": "library",
     "license": "MIT",
     "authors": [

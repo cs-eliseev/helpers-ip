@@ -1,4 +1,4 @@
-DATE CSE HELPERS
+IP CSE HELPERS
 =======
 
 The helpers allows you to manipulating network IP addresses (IPv4 and IPv6).
