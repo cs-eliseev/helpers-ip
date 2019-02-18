@@ -142,4 +142,23 @@ class IP
             $last_addr_str,
         ];
     }
+
+    /**
+     * Filter IPs address
+     *
+     * @param array $ips
+     * @param int|null $version
+     * @return array
+     */
+    public static function filterIPs(array $ips, ?int $version = null): array
+    {
+        $result = [self::IP_VERSION_4 => [], self::IP_VERSION_6 => []];
+
+        foreach ($ips as $ip) {
+            $current_version = self::getVersionIP($ip);
+            if (is_int($current_version)) $result[$current_version][] = $ip;
+        }
+
+        return is_int($version) ? $result[$version] : $result;
+    }
 }
