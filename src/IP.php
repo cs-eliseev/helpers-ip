@@ -41,7 +41,8 @@ class IP
      * Remove subnet mask to IPv6
      *
      * @param string $ip
-     * @return mixed
+     *
+     * @return null|string
      */
     public static function removeSubnetMaskIPv6(string $ip): ?string
     {
@@ -52,6 +53,7 @@ class IP
      * Check is IPv4 address
      *
      * @param string $ip
+     *
      * @return bool
      */
     public static function isIPv4(string $ip): bool
@@ -63,6 +65,7 @@ class IP
      * Check is IPv4 address
      *
      * @param string $ip
+     *
      * @return bool
      */
     public static function isIPv6(string $ip): bool
@@ -74,6 +77,7 @@ class IP
      * Get version IP address
      *
      * @param string $ip
+     *
      * @return int|null
      */
     public static function getVersionIP(string $ip): ?int
@@ -85,6 +89,7 @@ class IP
      * Is IP address
      *
      * @param string $ip
+     *
      * @return bool
      */
     public static function isIP(string $ip): bool
@@ -95,8 +100,11 @@ class IP
     /**
      * Get range IPv6 address
      *
-     * @param $ip - ex. 2a0a:2b40::4:60/124
-     * @return array  - ex. {2a0a:2b40::4:60, 2a0a:2b40::4:6f}
+     * @example 2a0a:2b40::4:60/124 => [2a0a:2b40::4:60, 2a0a:2b40::4:6f]
+     *
+     * @param $ip
+     *
+     * @return array
      */
     public static function getRangeIPv6(string $ip): array
     {
@@ -148,6 +156,7 @@ class IP
      *
      * @param array $ips
      * @param int|null $version
+     *
      * @return array
      */
     public static function filterIPs(array $ips, ?int $version = null): array
@@ -167,6 +176,7 @@ class IP
      *
      * @param array $ips
      * @param int|null $version
+     *
      * @return null|string
      */
     public static function getFirstIPByVersion (array $ips, int $version): ?string
