@@ -84,8 +84,15 @@ var_dump(IP::filterIPs([
     '2a0a:2b40::4:6f',
     '256.256.256.256'
 ]));
+// Example: is not IP v 4
+// [4 => [], 6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']]
+var_dump(IP::filterIPs([
+    '2a0a:2b40::4:60',
+    '2a0a:2b40::4:6f',
+    '256.256.256.256'
+]));
 // Example: filter IPv4 address
-// [4 => ['127.0.0.1', '255.255.255.255']]
+// ['127.0.0.1', '255.255.255.255']
 var_dump(IP::filterIPs([
     '127.0.0.1',
     '2a0a:2b40::4:60',
@@ -94,7 +101,7 @@ var_dump(IP::filterIPs([
     '256.256.256.256'
 ], 4));
 // Example: filter IPv6 address
-// [6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']]
+// ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']
 var_dump(IP::filterIPs([
     '127.0.0.1',
     '2a0a:2b40::4:60',
