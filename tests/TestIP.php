@@ -9,7 +9,7 @@ class TestIP extends TestCase
      * @param array $server
      * @param string $expected
      *
-     * @dataProvider  providerGetRealIp
+     * @dataProvider providerGetRealIp
      *
      * @runInSeparateProcess
      */
@@ -38,10 +38,10 @@ class TestIP extends TestCase
     }
 
     /**
-     * @param array $server
+     * @param string $ip
      * @param string $expected
      *
-     * @dataProvider  providerRemoveSubnetMaskIPv6
+     * @dataProvider providerRemoveSubnetMaskIPv6
      *
      * @runInSeparateProcess
      */
@@ -72,6 +72,8 @@ class TestIP extends TestCase
      * @param bool $expected
      *
      * @dataProvider providerIsIPv4
+     *
+     * @runInSeparateProcess
      */
     public function testIsIPv4(string $ip, bool $expected): void
     {
@@ -108,6 +110,8 @@ class TestIP extends TestCase
      * @param bool $expected
      *
      * @dataProvider providerIsIPv6
+     *
+     * @runInSeparateProcess
      */
     public function testIsIPv6(string $ip, bool $expected): void
     {
@@ -160,6 +164,8 @@ class TestIP extends TestCase
      * @param int|null $expected
      *
      * @dataProvider providerGetVersionIP
+     *
+     * @runInSeparateProcess
      */
     public function testGetVersionIP(string $ip, ?int $expected): void
     {
@@ -216,6 +222,8 @@ class TestIP extends TestCase
      * @param bool $expected
      *
      * @dataProvider providerIsIP
+     *
+     * @runInSeparateProcess
      */
     public function testIsIP(string $ip, bool $expected): void
     {
@@ -268,15 +276,17 @@ class TestIP extends TestCase
     }
 
     /**
-     * @param string $ip
+     * @param array $ip
      * @param int|null $version
      * @param array $expected
      *
      * @dataProvider providerFilterIPs
+     *
+     * @runInSeparateProcess
      */
-    public function testFilterIPs(string $ip, ?int $version, array $expected): void
+    public function testFilterIPs(array $ip, ?int $version, array $expected): void
     {
-        $this->assertEquals($expected, IP::filterIPs($ip));
+        $this->assertEquals($expected, IP::filterIPs($ip, $version));
     }
 
     /**
@@ -298,6 +308,15 @@ class TestIP extends TestCase
             ],
             [
                 [
+                    '2a0a:2b40::4:60',
+                    '2a0a:2b40::4:6f',
+                    '256.256.256.256'
+                ],
+                null,
+                [4 => [], 6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']],
+            ],
+            [
+                [
                     '127.0.0.1',
                     '2a0a:2b40::4:60',
                     '255.255.255.255',
@@ -305,7 +324,7 @@ class TestIP extends TestCase
                     '256.256.256.256'
                 ],
                 4,
-                [4 => ['127.0.0.1', '255.255.255.255']],
+                ['127.0.0.1', '255.255.255.255'],
             ],
             [
                 [
@@ -316,21 +335,23 @@ class TestIP extends TestCase
                     '256.256.256.256'
                 ],
                 6,
-                [6 => ['2a0a:2b40::4:60', '2a0a:2b40::4:6f']],
+                ['2a0a:2b40::4:60', '2a0a:2b40::4:6f'],
             ],
         ];
     }
 
     /**
-     * @param string $ip
-     * @param int|null $version
-     * @param array $expected
+     * @param array $ip
+     * @param int $version
+     * @param null|string $expected
      *
      * @dataProvider providerGetFirstIPByVersion
+     *
+     * @runInSeparateProcess
      */
-    public function testGetFirstIPByVersion(string $ip, int $version, ?string $expected): void
+    public function testGetFirstIPByVersion(array $ip, int $version, ?string $expected): void
     {
-        $this->assertEquals($expected, IP::getFirstIPByVersion($ip));
+        $this->assertEquals($expected, IP::getFirstIPByVersion($ip, $version));
     }
 
     /**
