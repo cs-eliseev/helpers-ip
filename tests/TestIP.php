@@ -30,9 +30,25 @@ class TestIP extends TestCase
                 [
                     'HTTP_X_REAL_IP' => '',
                     'HTTP_CLIENT_IP' => '',
-                    'HTTP_X_FORWARDED_FOR' => '10.10.10.160, 10.10.10.161, 10.10.10.162',
+                    'HTTP_X_FORWARDED_FOR' => '127.0.0.160, 127.0.0.161, 127.0.0.162',
                 ],
-                '10.10.10.162',
+                '127.0.0.162',
+            ],
+            [
+                [
+                    'HTTP_X_REAL_IP' => '',
+                    'HTTP_CLIENT_IP' => '127.0.0.161',
+                    'HTTP_X_FORWARDED_FOR' => '127.0.0.162',
+                ],
+                '127.0.0.161',
+            ],
+            [
+                [
+                    'HTTP_X_REAL_IP' => '127.0.0.160',
+                    'HTTP_CLIENT_IP' => '127.0.0.161',
+                    'HTTP_X_FORWARDED_FOR' => '127.0.0.162',
+                ],
+                '127.0.0.160',
             ],
         ];
     }
@@ -394,6 +410,33 @@ class TestIP extends TestCase
                 4,
                 null,
             ],
+        ];
+    }
+
+    /**
+     * @param string $ip
+     * @param array $expected
+     *
+     * @dataProvider providerGetRangeIPv6
+     *
+     * @runInSeparateProcess
+     */
+    public function testGetRangeIPv6(string $ip, array $expected): void
+    {
+        $this->assertEquals($expected, IP::getRangeIPv6($ip));
+    }
+
+    /**
+     * @return array
+     */
+    public function providerGetRangeIPv6(): array
+    {
+        return [
+            [
+                '2a0a:2b40::4:60/124',
+                ['2a0a:2b40::4:60', '2a0a:2b40::4:6f'],
+            ],
+
         ];
     }
 }
