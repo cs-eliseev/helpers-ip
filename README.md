@@ -1,6 +1,11 @@
 IP CSE HELPERS
 =======
 
+[![Packagist](https://img.shields.io/packagist/v/cse/helpers-ip.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-ip)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)](https://packagist.org/packages/cse/helpers-ip)
+[![Packagist](https://img.shields.io/packagist/l/cse/helpers-ip.svg?style=flat-square)](https://github.com/cs-eliseev/helpers-ip/blob/master/LICENSE.md)
+[![GitHub repo size](https://img.shields.io/github/repo-size/cs-eliseev/helpers-ip.svg?style=flat-square)](https://github.com/cs-eliseev/helpers-ip/archive/master.zip)
+
 The helpers allows you to manipulating network IP addresses (IPv4 and IPv6).
 
 Project repository: https://github.com/cs-eliseev/helpers-ip
