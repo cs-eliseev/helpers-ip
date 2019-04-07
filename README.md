@@ -1,3 +1,5 @@
+English | [Русский](https://github.com/cs-eliseev/helpers-ip/blob/master/README.ru_RU.md)
+
 IP CSE HELPERS
 =======
 
@@ -14,6 +16,7 @@ The helpers allows you to manipulating network IP addresses (IPv4 and IPv6).
 
 Project repository: https://github.com/cs-eliseev/helpers-ip
 
+**DEMO**
 ```php
 $ip = IP::getRealIP();
 if (IP::isIP($ip)) {
